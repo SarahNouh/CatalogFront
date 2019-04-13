@@ -1,15 +1,12 @@
 import React, { Component } from "react";
 import "./App.scss";
-import ProductsGrid from "./components/products-grid";
+import { AppState } from "./interfaces/app-state";
 import CategoryGrid from "./components/category-grid";
-import Header from "./components/header";
 import FiltersSection from "./components/filters-section";
+import Header from "./components/header";
+import ProductsGrid from "./components/products-grid";
 import { Range } from "./interfaces/range";
 
-interface AppState {
-  productUrl: string;
-  categoryName: string;
-}
 class App extends Component<{}, AppState> {
   constructor(props: {}) {
     super(props);
@@ -19,9 +16,11 @@ class App extends Component<{}, AppState> {
     };
   }
 
-  /*
+  /**
    * A function to handle changing the products on category click
+   *
    * @param {number} categoryId
+   * @param {string} categoryName
    * @public
    */
   handleChangeCategory = (categoryId: number, categoryName: string) => {
@@ -42,17 +41,25 @@ class App extends Component<{}, AppState> {
           filters = filters.split("categoryId=")[1];
           splitIndex = filters.indexOf("&");
           if (splitIndex > -1) {
+            //retreive the rest of the filters
             filters = filters.substring(splitIndex + 1);
+            //append new category and previous filters to url
             url = url + "?" + "categoryId=" + categoryId + "&" + filters;
           } else {
+            //no previous fitlers present
+            //just append new category
             filters = "";
             url = url + "?" + "categoryId=" + categoryId;
           }
+        } else {
+          //no previous category present
+          //append new category and previous filters
+          url += "?" + "categoryId=" + categoryId + "&" + filters;
         }
-        //concatenate filters after the category filter is added
       }
     } else {
       //we have no previous filters
+      //just append new category
       url += "?categoryId=" + categoryId;
     }
     this.setState({
@@ -61,6 +68,14 @@ class App extends Component<{}, AppState> {
     });
   };
 
+  /**
+   * A function to handle changing the products on side filters click
+   *
+   * @param {string} colourValue
+   * @param {number} ratingNumber
+   * @param {Range | number} priceRange
+   * @public
+   */
   handleFilterData = (
     colourValue: string,
     ratingValue: number,
@@ -81,6 +96,7 @@ class App extends Component<{}, AppState> {
       }
       // currentUrl = this.state.productUrl.split("?")[0] + "?";
     } else {
+      //no previous filters selected
       currentUrl = this.state.productUrl + "?";
     }
     //if we have a value for filtering by colour add it to URL
@@ -95,20 +111,26 @@ class App extends Component<{}, AppState> {
     }
     //if we have a value for filtering by rating add it to URL
     if (ratingValue > 0) {
+      //if previous filters are present
       if (filtersValues.length > 0) {
+        //add rating filters to them
         filtersValues += "&rating=" + ratingValue;
       } else {
         filtersValues += "rating=" + ratingValue;
       }
     }
+    //if a price range is selected
     if (priceRange !== -1) {
+      //if previous filters are present
       if (filtersValues.length > 0) {
+        //add price filters to them
         filtersValues +=
           "&price_lte=" +
           (priceRange as Range).max +
           "&price_gte=" +
           (priceRange as Range).min;
       } else {
+        //add price filters as first filters
         filtersValues +=
           "price_lte=" +
           (priceRange as Range).max +
@@ -116,7 +138,7 @@ class App extends Component<{}, AppState> {
           (priceRange as Range).min;
       }
     }
-    console.log(currentUrl + filtersValues);
+    //set state to update url with selected filters
     this.setState({
       productUrl: currentUrl + filtersValues
     });
