@@ -1,0 +1,44 @@
+// @Author: sarahnouh
+// @Date:   1985-10-26T10:15:00+02:00
+// @Last modified by:   sarahnouh
+// @Last modified time: 2019-04-13T15:13:05+02:00
+$blush: #d8616d;
+$mint: #76ffd4;
+$petrol: #5767ff;
+$silver: #e0dede;
+$sunbeam: #efc90a;
+@import url("https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Lato|Pacifico|Raleway:400,500|Roboto+Slab");
+@import "~bootstrap/scss/_functions.scss";
+@import "~bootstrap/scss/_variables.scss";
+@import "~bootstrap/scss/mixins/_breakpoints.scss";
+@import "~react-input-range/lib/css/index.css";
+@import "./scss/product-item.scss";
+@import "./scss/header.scss";
+@import "./scss/category-item.scss";
+@import "./scss/filters-section.scss";
+body {
+  // font-family: "Pacifico", cursive;
+  // font-family: "Amatic SC", cursive;
+  // font-family: "Lato", sans-serif;
+  font-family: "Raleway", sans-serif;
+  // font-family: "Roboto Slab", serif;
+}
+.star {
+  width: 20px;
+  margin: 2px;
+  fill: $blush;
+  &.filled-star {
+    fill: $blush;
+  }
+  @include media-breakpoint-down(sm) {
+    width: 15px;
+  }
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

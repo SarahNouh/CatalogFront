@@ -1,0 +1,33 @@
+// @Author: sarahnouh
+// @Date:   2019-04-07T01:06:42+02:00
+// @Last modified by:   sarahnouh
+// @Last modified time: 2019-04-11T02:30:17+02:00
+.products-title {
+  text-align: center;
+  border-top: 3px solid $petrol;
+  border-bottom: 3px solid $petrol;
+  font-family: "Amatic SC";
+  color: $petrol;
+  font-size: 4em;
+  margin-bottom: 60px;
+  margin-top: 60px;
+  @include media-breakpoint-down(sm) {
+    font-size: 3em;
+  }
+}
+.product-item {
+  text-align: center;
+
+  img {
+    width: 100%;
+  }
+  .title {
+    font-size: 1.15em;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+  .title,
+  .price {
+    color: gray;
+  }
+}

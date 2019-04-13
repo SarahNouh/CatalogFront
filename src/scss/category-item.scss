@@ -1,0 +1,58 @@
+// @Author: sarahnouh
+// @Date:   2019-04-07T03:44:08+02:00
+// @Last modified by:   sarahnouh
+// @Last modified time: 2019-04-11T02:52:10+02:00
+.category-item {
+  position: relative;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s linear;
+
+  @include media-breakpoint-up(lg) {
+    height: 150px;
+    width: 150px;
+    margin: auto;
+  }
+  img {
+    opacity: 0.8;
+    width: 100%;
+    border-radius: 50%;
+    height: 100%;
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+  .title {
+    color: white;
+    font-weight: 900;
+    background-color: $sunbeam;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    line-height: 70px;
+    text-align: center;
+    font-family: "Amatic SC", cursive;
+    font-weight: 700;
+    @include media-breakpoint-up(lg) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    @include media-breakpoint-down(md) {
+      margin: auto;
+    }
+  }
+  &:hover {
+    transform: scale(1.2);
+  }
+  &.active,
+  &:hover {
+    border: 4px solid $petrol;
+
+    .title {
+      background-color: $petrol;
+      color: white;
+    }
+  }
+}

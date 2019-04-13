@@ -1,0 +1,93 @@
+// @Author: sarahnouh
+// @Date:   2019-04-07T05:49:05+02:00
+// @Last modified by:   sarahnouh
+// @Last modified time: 2019-04-12T01:28:14+02:00
+@mixin btn-color($color) {
+  border-color: $color;
+  color: $color;
+}
+.filters {
+  // border: 1px solid black;
+  padding: 20px;
+  @include media-breakpoint-up(md) {
+    margin-top: 135px;
+  }
+  .title {
+    // width: 120px;
+    // margin-top: -36px;
+    // background-color: white;
+    // padding-left: 5px;
+  }
+  .price-range-filter {
+    margin-bottom: 50px;
+    margin-top: 20px;
+    border: 1px solid $petrol;
+    padding: 10px 20px;
+    .input-range {
+      display: block;
+      margin: 20px auto;
+      width: 98%;
+    }
+    .input-range__track--active {
+      background: $petrol;
+    }
+    .input-range__slider {
+      background: $petrol;
+      border-color: $petrol;
+    }
+  }
+  .colour-section {
+    border: 1px solid $sunbeam;
+    padding: 20px;
+  }
+  .rating-section {
+    border: 1px solid $blush;
+    padding: 10px 0;
+    margin-top: 40px;
+    .title {
+      padding-left: 20px;
+    }
+    .rating-item {
+      cursor: pointer;
+      padding: 4px 20px;
+      &.active {
+        background-color: $petrol;
+        .star,
+        .filled-star {
+          fill: white;
+        }
+      }
+    }
+  }
+
+  .btn {
+    margin-top: 10px;
+    font-weight: 700;
+    background-color: $petrol;
+    color: white;
+    &.clear,
+    &.selected-filters {
+      background: white;
+      @include btn-color($petrol);
+      position: relative;
+      padding-right: 22px;
+      margin-right: 20px;
+      svg {
+        width: 10px;
+        height: 10px;
+        fill: $petrol;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        right: 6px;
+      }
+      &.rating {
+        @include btn-color($blush);
+      }
+    }
+    &.selected-filters {
+      font-weight: 100;
+    }
+  }
+}
