@@ -242,7 +242,6 @@ export default class FiltersSection extends Component<
    * @public
    */
   handleClearFilters = () => {
-    console.log("CLEAR");
     this.selectedRating = -1;
     this.selectedPriceRange = -1;
     this.setState(
@@ -309,8 +308,6 @@ export default class FiltersSection extends Component<
         activeRating: ["", "", "", "", ""]
       },
       () => {
-        console.log(this.state.priceRange);
-
         //calling the function after clearing color filter, to adjust url and refetch items
         this.handleFilteringData();
       }
@@ -325,15 +322,18 @@ export default class FiltersSection extends Component<
    */
   getValidSelectedColour = (color: string) => {
     if ((chroma as any).valid(color)) {
-      //checking if the colour is not white (if it's white we want to return black as white is not visible)
-      if (color !== "white") {
+      //checking if the colour is not a very light colour (if it's light we want to return black as this color is not visible)
+      if (chroma.contrast(color, "white") >= 1.2) {
         return color;
+      } else {
+        //if the colour is very light darken it and return
+        return chroma(color).darken(2) + "";
       }
     } else {
       if (
         //if the colour is not valid try splitting it and checking the validity of the second colour word if any
         color.split(" ")[1] !== undefined &&
-        color.split(" ")[1] !== "white" &&
+        chroma.contrast(color, "white") >= 1.2 &&
         (chroma as any).valid(color.split(" ")[1])
       ) {
         return color.split(" ")[1];
@@ -364,7 +364,7 @@ export default class FiltersSection extends Component<
         <div className="colour-section">
           <h6 className="title">By Color</h6>
           <Select
-            closeMenuOnSelect={false}
+            closeMenuOnSelect={true}
             defaultValue={this.state.coloursArray[0]}
             options={this.state.coloursArray}
             styles={colourStyles}
