@@ -25,8 +25,38 @@ class App extends Component<{}, AppState> {
    * @public
    */
   handleChangeCategory = (categoryId: number, categoryName: string) => {
+    let url: string = this.state.productUrl;
+    let filters: string = "";
+    let splitIndex: number = 0;
+    //check if we have other filters in the url
+    if (url.indexOf("?") > -1) {
+      //split the url to the main url and the filters part
+      filters = url.split("?")[1];
+      url = url.split("?")[0];
+
+      //if we have any filters
+      if (filters) {
+        //check if we have a previous category present
+        if (filters.indexOf("categoryId=") > -1) {
+          //remove previous category and its value
+          filters = filters.split("categoryId=")[1];
+          splitIndex = filters.indexOf("&");
+          if (splitIndex > -1) {
+            filters = filters.substring(splitIndex + 1);
+            url = url + "?" + "categoryId=" + categoryId + "&" + filters;
+          } else {
+            filters = "";
+            url = url + "?" + "categoryId=" + categoryId;
+          }
+        }
+        //concatenate filters after the category filter is added
+      }
+    } else {
+      //we have no previous filters
+      url += "?categoryId=" + categoryId;
+    }
     this.setState({
-      productUrl: "http://test-api.edfa3ly.io/product?categoryId=" + categoryId,
+      productUrl: url,
       categoryName: categoryName + " Products"
     });
   };
@@ -40,7 +70,16 @@ class App extends Component<{}, AppState> {
     let filtersValues: string = "";
     //remove previous filters from URL if any
     if (this.state.productUrl.indexOf("?") > -1) {
-      currentUrl = this.state.productUrl.split("?")[0] + "?";
+      //check if url has a category selected
+      if (this.state.productUrl.indexOf("categoryId=") > -1) {
+        // maintain category and it's value and trim after it
+        currentUrl = this.state.productUrl.split("categoryId=")[0];
+        //add the current category and it's value to the current filters
+        filtersValues +=
+          "categoryId=" +
+          this.state.productUrl.split("categoryId=")[1].split("&")[0];
+      }
+      // currentUrl = this.state.productUrl.split("?")[0] + "?";
     } else {
       currentUrl = this.state.productUrl + "?";
     }
@@ -65,15 +104,15 @@ class App extends Component<{}, AppState> {
     if (priceRange !== -1) {
       if (filtersValues.length > 0) {
         filtersValues +=
-          "&price<" +
+          "&price_lte=" +
           (priceRange as Range).max +
-          "&price>" +
+          "&price_gte=" +
           (priceRange as Range).min;
       } else {
         filtersValues +=
-          "price<" +
+          "price_lte=" +
           (priceRange as Range).max +
-          "&price>" +
+          "&price_gte=" +
           (priceRange as Range).min;
       }
     }
