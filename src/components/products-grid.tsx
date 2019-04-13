@@ -6,8 +6,13 @@ import { ReactComponent as Star } from "../images/star.svg";
 import { ReactComponent as FilledStar } from "../images/filled-star.svg";
 
 export default class ProductsGrid extends Component<GridProps, GridState> {
+  currencyMap: Map<string, JSX.Element>;
+
   constructor(props: GridProps) {
     super(props);
+    this.currencyMap = new Map();
+    //if we have any other currencies they should be added to the map as well
+    this.currencyMap.set("USD", <span>&#36;</span>);
     this.state = {
       items: [],
       active: []
@@ -105,7 +110,7 @@ export default class ProductsGrid extends Component<GridProps, GridState> {
                 ) : null}
                 {item.price ? (
                   <p className="price">
-                    <span>&#36;</span>
+                    {this.currencyMap.get(item.currency)}
                     {item.price}
                   </p>
                 ) : null}

@@ -104,7 +104,7 @@ export default class FiltersSection extends Component<
       selectedColour: "",
       priceIsSelected: false
     };
-    this.maxPriceRange = 0;
+    this.maxPriceRange = 1000;
     this.selectedPriceRange = -1;
     this.selectedRating = -1;
   }

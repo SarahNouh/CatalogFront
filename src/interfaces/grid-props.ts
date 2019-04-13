@@ -2,7 +2,7 @@
  * @Author: sarahnouh
  * @Date:   2019-04-08T00:01:21+02:00
  * @Last modified by:   sarahnouh
- * @Last modified time: 2019-04-11T05:28:53+02:00
+ * @Last modified time: 2019-04-13T19:06:32+02:00
  */
 export interface GridProps {
   /**
@@ -20,5 +20,9 @@ export interface GridProps {
    *@type function
    */
   handleCategoryClick?: any;
+  /**
+   *The Name of the current category if any is selected otherwise it's "all products"
+   *@type string
+   */
   categoryName?: string;
 }
