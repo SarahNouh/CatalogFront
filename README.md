@@ -15,7 +15,7 @@
 - All data is rendered from the requested API
 
 ## Missing Features:
-- User cannot clear the selected category
+- User cannot clear the selected category to view all products again
 
 ## Features/Changes to add if I had more time:
 - User able to clear category
