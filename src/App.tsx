@@ -94,10 +94,9 @@ class App extends Component<{}, AppState> {
           "categoryId=" +
           this.state.productUrl.split("categoryId=")[1].split("&")[0];
       }
-      // currentUrl = this.state.productUrl.split("?")[0] + "?";
     } else {
       //no previous filters selected
-      currentUrl = this.state.productUrl + "?";
+      currentUrl = this.state.productUrl;
     }
     //if we have a value for filtering by colour add it to URL
     if (colourValue !== "") {
@@ -137,6 +136,11 @@ class App extends Component<{}, AppState> {
           "&price_gte=" +
           (priceRange as Range).min;
       }
+    }
+    if (filtersValues.length > 0) {
+      currentUrl = currentUrl.split("?")[0] + "?";
+    } else {
+      currentUrl = currentUrl.split("?")[0];
     }
     //set state to update url with selected filters
     this.setState({
