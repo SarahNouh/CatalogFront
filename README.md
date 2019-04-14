@@ -1,68 +1,45 @@
+## This project represents a `frontend` solution for catalog front of an e-commerce website name Clouds & Co.
+
+## Features available in the project:
+-User can select a category to view products related to this category
+-User can filter products using (a price range, colour or rating)
+-User can combine one or more of the filters mentioned above
+-User can clear one or more of the selected combination of filters
+-User can clear all selected filters
+
+## Missing Features:
+-User cannot clear the selected category
+
+## Technical stack used:
+# React: 
+  Light-weight library, faster rendering, data binding and a lot is doable in a relatively smaller time compared with others     (There was no need for Redux so I did not use it)
+# Typescript: 
+  Pairs well with react and having everything type-checked reduces a lot of errors, everything related to types is caught on     spot. 
+# SCSS: 
+  For writing more compact css code, nesting, using variables and mixins.
+# Bootstrap: 
+  For using the grid and polishing the view a bit 
+
+## Architecture 
+The project is currently component based.
+The folders are organized based on their types.
+All scss files in a folder, all tsx files in a folder and all the assets are in a separate folder.
+And each component has a file in the tsx folder and an adjacent file in the scss folder.
+In case the project files grew very large it could then be organized based on business domain.
+
+# Features to add if I had more time:
+- User able to clear category
+- Using React Routing for the filters
+- Using pagination
+- Lazy loading for the rest of the images
+- on clicking on product, open up a modal with more of the product details, zoom in on product image, ability to rate or review product.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
+## To run the project:
 
 ### `npm start`
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
