@@ -50,6 +50,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## To run the project:
 
+### `npm install`
+To install all missing libraries
+
 ### `npm start`
 
 Runs the app in the development mode.<br>
