@@ -1,23 +1,23 @@
 ## This project represents a `frontend` solution for catalog front of an e-commerce website name Clouds & Co.
 
 ## Features available in the project:
--User can select a category to view products related to this category
--User can filter products using (a price range, colour or rating)
--User can combine one or more of the filters mentioned above
--User can clear one or more of the selected combination of filters
--User can clear all selected filters
+- User can select a category to view products related to this category
+- User can filter products using (a price range, colour or rating)
+- User can combine one or more of the filters mentioned above
+- User can clear one or more of the selected combination of filters
+- User can clear all selected filters
 
 ## Missing Features:
--User cannot clear the selected category
+- User cannot clear the selected category
 
 ## Technical stack used:
-# React: 
+### React: 
   Light-weight library, faster rendering, data binding and a lot is doable in a relatively smaller time compared with others     (There was no need for Redux so I did not use it)
-# Typescript: 
+### Typescript: 
   Pairs well with react and having everything type-checked reduces a lot of errors, everything related to types is caught on     spot. 
-# SCSS: 
+### SCSS: 
   For writing more compact css code, nesting, using variables and mixins.
-# Bootstrap: 
+### Bootstrap: 
   For using the grid and polishing the view a bit 
 
 ## Architecture 
@@ -27,10 +27,11 @@ All scss files in a folder, all tsx files in a folder and all the assets are in 
 And each component has a file in the tsx folder and an adjacent file in the scss folder.
 In case the project files grew very large it could then be organized based on business domain.
 
-# Features to add if I had more time:
+## Features to add if I had more time:
 - User able to clear category
 - Using React Routing for the filters
 - Using pagination
+- Deploying on a server
 - Lazy loading for the rest of the images
 - on clicking on product, open up a modal with more of the product details, zoom in on product image, ability to rate or review product.
 
